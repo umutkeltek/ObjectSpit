@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1083465655076111520}
   - component: {fileID: 2949234385233457258}
   - component: {fileID: 4498541179944560922}
+  - component: {fileID: 3061861247423434370}
   - component: {fileID: 3549007095026996063}
-  - component: {fileID: 4433152506461922386}
   m_Layer: 0
   m_Name: Alpaca
   m_TagString: Untagged
@@ -106,6 +106,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!65 &3061861247423434370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741705672200982975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35834894, y: 0.38103628, z: 0.17612003}
+  m_Center: {x: -0.17715327, y: -0.09060216, z: 0.00009086728}
 --- !u!114 &3549007095026996063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 0}
-  _spawnPoint: {fileID: 1303996904900425073}
+  _spawnPoint: {fileID: 0}
   _smokeSystem: {fileID: 0}
   _targetLayer:
     serializedVersion: 2
@@ -128,23 +141,9 @@ MonoBehaviour:
   _torque: 120
   _maxTorqueBonus: 150
   _maxAngularVelocity: 10
-  _maxY: 58.66
+  _maxY: 10
   _maxUpAssist: 30
-  _forceAmount: 1500
---- !u!64 &4433152506461922386
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3741705672200982975}
-  m_Material: {fileID: 13400000, guid: 6f2e2440cd93b2f489a6e2687c76d345, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7935458843459181856, guid: 1939e00e8e629b24d92c37cd9e49c1f1, type: 3}
+  _forceAmount: 600
 --- !u!1 &5606277031109368893
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,11 +167,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5606277031109368893}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4082202796444273413}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
