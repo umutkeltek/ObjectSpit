@@ -1,13 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    private bool ToggleSlowMoo;
-
-    public void ToggleSlowMo(bool state)
+    public int totalGold;
+    private int currentScene;
+    
+    private void Start()
     {
-        ToggleSlowMoo = state;
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        Time.timeScale = 0.9f;
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(currentScene + 1);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(currentScene);
     }
 }
