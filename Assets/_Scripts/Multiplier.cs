@@ -2,17 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Multiplier : MonoBehaviour
 {
-    [SerializeField] private int multiplyValue;
-
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] public int multiplyValue;
+    public MeshRenderer mCube;
+    [SerializeField] TextMeshProUGUI mText;
+    void Start()
     {
-        if (collision.transform.tag == "Bullet")
+        mText.text = "x" + multiplyValue.ToString();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {   
+        if (collision.gameObject.tag == "Bullet")
         {
             LevelManager.Instance.EndLevel(multiplyValue);
-            GameManager.Instance.NextLevel();
+            GameManager.Instance.RestartLevel();
         }
         
     }

@@ -14,10 +14,15 @@ public class Bullet : MonoBehaviour
     
 
     void OnCollisionEnter(Collision collision)
-    {
+    {   
         if (collision.transform.tag != "Multiplier" && collision.transform.tag != "Enemy" && collision.transform.tag != "Player")
-        {
+        { 
             Destroy(this.gameObject);
+        }
+        else if (collision.gameObject.tag == "Multiplier")
+        {   Multiplier ml = collision.gameObject.transform.root.gameObject.GetComponent<Multiplier>();
+            LevelManager.Instance.EndLevel(ml.multiplyValue);
+            GameManager.Instance.RestartLevel();
         }
     }
 

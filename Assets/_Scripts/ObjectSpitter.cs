@@ -48,7 +48,6 @@ public class ObjectSpitter : MonoBehaviour
         var assistPoint = Mathf.InverseLerp(0, _maxY, _rigidbody.position.y);
         var assistAmount = Mathf.Lerp(_maxUpAssist, 0, assistPoint);
         var forceDir = -transform.right * _forceAmount + Vector3.up * assistAmount;
-        Debug.Log(forceDir);
         if (_rigidbody.position.y > _maxY) forceDir.y = Mathf.Min(0, forceDir.y);
         _rigidbody.AddForce(forceDir);
         
