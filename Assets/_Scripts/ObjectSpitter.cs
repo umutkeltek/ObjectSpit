@@ -50,12 +50,14 @@ public class ObjectSpitter : MonoBehaviour
         var forceDir = -transform.right * _forceAmount + Vector3.up * assistAmount;
         if (_rigidbody.position.y > _maxY) forceDir.y = Mathf.Min(0, forceDir.y);
         _rigidbody.AddForce(forceDir);
+        //_rigidbody.AddForceAtPosition((transform.right * forceMultiplier), forcePoint.position, ForceMode.Impulse);
+
         
         var angularPoint = Mathf.InverseLerp(0, _maxAngularVelocity, Mathf.Abs(_rigidbody.angularVelocity.z));
         var amount = Mathf.Lerp(0, _maxTorqueBonus, angularPoint);
         var torque = _torque + amount;
         
-        var dir = Vector3.Dot(_spawnPoint.right, Vector3.forward) < 0 ? Vector3.left : Vector3.right;
+        var dir = Vector3.Dot(_spawnPoint.forward, Vector3.right) < 0 ? Vector3.back : Vector3.forward;
         _rigidbody.AddTorque(dir * torque);
     }
 }
