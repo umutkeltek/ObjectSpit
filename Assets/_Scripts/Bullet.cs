@@ -11,7 +11,10 @@ public class Bullet : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    
+    private void Start()
+    {
+        Destroy(this.gameObject, 2);
+    }
 
     void OnCollisionEnter(Collision collision)
     {   
