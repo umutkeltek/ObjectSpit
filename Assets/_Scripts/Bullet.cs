@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         else if (collision.gameObject.tag == "Multiplier")
         {   Multiplier ml = collision.gameObject.transform.root.gameObject.GetComponent<Multiplier>();
             LevelManager.Instance.EndLevel(ml.multiplyValue);
-            GameManager.Instance.RestartLevel();
+            GameManager.Instance.NextLevel();
         }
     }
 

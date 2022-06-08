@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
         if (collision.transform.tag == "Bullet")
         {
             LevelManager.Instance.AddTemporaryGold(enemyGoldValue);
+            Destroy(collision.gameObject);
             Destroy(this.gameObject);
         }
     }

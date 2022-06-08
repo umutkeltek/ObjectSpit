@@ -7,13 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoSingleton<GameManager>
 {
     public int totalGold;
-    private int currentScene;
+    public int currentScene;
     
     private static GameManager instance = null;
     void Awake(){
         if(instance == null)
         {
             instance = this;
+            currentScene = SceneManager.GetActiveScene().buildIndex;
             DontDestroyOnLoad(this.gameObject);
             return;
         }
@@ -21,7 +22,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private void Start()
     {
-        currentScene = SceneManager.GetActiveScene().buildIndex;
+        
         Time.timeScale = 0.9f;
         DontDestroyOnLoad(this.gameObject);
 

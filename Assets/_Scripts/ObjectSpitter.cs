@@ -20,10 +20,14 @@ public class ObjectSpitter : MonoBehaviour
     
     private Rigidbody _rigidbody;
     AudioSource sound;
+    private Transform _transform;
+    
     private void Awake()
-    {
+    {   
         _rigidbody = GetComponent<Rigidbody>();
         sound = gameObject.GetComponent<AudioSource>();
+        _transform = GetComponent<Transform>();
+        
     }
 
     private void Update()
@@ -34,6 +38,9 @@ public class ObjectSpitter : MonoBehaviour
         {   
             SpawnBullet();
             ApplyForceTorque();
+            
+            
+            
         }
     }
 
@@ -49,7 +56,7 @@ public class ObjectSpitter : MonoBehaviour
         var assistAmount = Mathf.Lerp(_maxUpAssist, 0, assistPoint);
         var forceDir = -transform.right * _forceAmount + Vector3.up * assistAmount;
         if (_rigidbody.position.y > _maxY) forceDir.y = Mathf.Min(0, forceDir.y);
-        _rigidbody.AddForce(forceDir);
+        _rigidbody.AddForce(forceDir,ForceMode.Impulse);
         //_rigidbody.AddForceAtPosition((transform.right * forceMultiplier), forcePoint.position, ForceMode.Impulse);
 
         
@@ -60,4 +67,6 @@ public class ObjectSpitter : MonoBehaviour
         var dir = Vector3.Dot(_spawnPoint.forward, Vector3.right) < 0 ? Vector3.back : Vector3.forward;
         _rigidbody.AddTorque(dir * torque);
     }
+
+    
 }

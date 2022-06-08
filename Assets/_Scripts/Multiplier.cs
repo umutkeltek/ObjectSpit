@@ -16,9 +16,11 @@ public class Multiplier : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {   
         if (collision.gameObject.tag == "Bullet")
-        {
+        {   Destroy(collision.transform);
+            //GameManager.Instance.currentScene = GameManager.Instance.currentScene + 1;
             LevelManager.Instance.EndLevel(multiplyValue);
-            GameManager.Instance.RestartLevel();
+            //GameManager.Instance.NextLevel();
+            
         }
         
     }
