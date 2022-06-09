@@ -8,8 +8,8 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public int totalGold;
     public int currentScene;
-    
     private static GameManager instance = null;
+
     void Awake(){
         if(instance == null)
         {
@@ -30,7 +30,16 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(currentScene + 1);
+        currentScene = SceneManager.GetActiveScene().buildIndex; //þu anki sahneyi alýp next yapýyor
+        if (currentScene != SceneManager.sceneCountInBuildSettings-1)
+        {
+            SceneManager.LoadScene(currentScene + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
+        //print(SceneManager.sceneCountInBuildSettings);  //son sahneyi bulmak için
     }
 
     public void RestartLevel()
