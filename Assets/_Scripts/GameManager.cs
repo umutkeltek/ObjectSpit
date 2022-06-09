@@ -30,7 +30,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void NextLevel()
     {
-        currentScene = SceneManager.GetActiveScene().buildIndex; //þu anki sahneyi alýp next yapýyor
+        currentScene = SceneManager.GetActiveScene().buildIndex; //ï¿½u anki sahneyi alï¿½p next yapï¿½yor
         if (currentScene != SceneManager.sceneCountInBuildSettings-1)
         {
             SceneManager.LoadScene(currentScene + 1);
@@ -39,11 +39,11 @@ public class GameManager : MonoSingleton<GameManager>
         {
             SceneManager.LoadScene(0);
         }
-        //print(SceneManager.sceneCountInBuildSettings);  //son sahneyi bulmak için
+        //print(SceneManager.sceneCountInBuildSettings);  //son sahneyi bulmak iï¿½in
     }
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(currentScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
