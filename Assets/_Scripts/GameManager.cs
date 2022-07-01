@@ -9,7 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
     public int totalGold;
     public int currentScene;
     private static GameManager instance = null;
-
+    
     void Awake(){
         if(instance == null)
         {
@@ -34,16 +34,19 @@ public class GameManager : MonoSingleton<GameManager>
         if (currentScene != SceneManager.sceneCountInBuildSettings-1)
         {
             SceneManager.LoadScene(currentScene + 1);
+            AdManager.Instance.showAds();
         }
         else
         {
             SceneManager.LoadScene(0);
+            AdManager.Instance.showAds();
         }
         //print(SceneManager.sceneCountInBuildSettings);  //son sahneyi bulmak i�in
     }
 
     public void RestartLevel()
-    {
+    {   AdManager.Instance.showAds();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
-}
+}               

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class AdManager : MonoBehaviour
+public class AdManager : MonoSingleton<AdManager>
 {
     
 #if UNITY_IOS
@@ -15,16 +15,24 @@ public class AdManager : MonoBehaviour
     private void Start()
     {
         Advertisement.Initialize(gameId);
+        StartCoroutine(ShowBannerWhenInitialized());
     }
 
-    void Update()
+    IEnumerator ShowBannerWhenInitialized()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        while (!Advertisement.isInitialized)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        
+        Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+        Advertisement.Banner.Show("Banner");
+    }
+    public void showAds()
+    {
+        if (Advertisement.IsReady("Rewarded_Android"))
         {   
-            if (Advertisement.IsReady("Rewarded_Android"))
-            {   Debug.Log("READY");
-                Advertisement.Show("Rewarded_Android");
-            }
+            Advertisement.Show("Rewarded_Android");
         }
     }
     
